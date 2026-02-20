@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { ethers } = require('ethers');
-const Victim = require('./models/victimSchema');
+const Victim = require('./victimSchema');
 
 const app = express();
 app.use(express.json());
@@ -56,5 +56,6 @@ app.post('/api/withdraw', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
 
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
