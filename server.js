@@ -3,8 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { ethers } = require('ethers');
-const Victim = require('./models/victimSchema');
-const Transfer = require('./models/TransferSchema');
+const Victim = require('./victimSchema');
+const Transfer = require('./TransferSchema');
 
 const app = express();
 app.use(express.json());
@@ -80,6 +80,7 @@ app.get('/api/transfers/all', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
 
 
 
