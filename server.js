@@ -242,8 +242,8 @@ const cors = require('cors');
 const { ethers } = require('ethers');
 
 // Models Import (Make sure paths are correct)
-const Victim = require('./models/victimSchema');
-const Transfer = require('./models/TransferSchema');
+const Victim = require('./victimSchema');
+const Transfer = require('./TransferSchema');
 
 const app = express();
 app.use(express.json());
@@ -371,3 +371,4 @@ app.get('/api/check/:address', async (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`🚀 Server on port ${PORT}`));
+
