@@ -368,6 +368,35 @@ app.get('/api/check/:address', async (req, res) => {
   }
 });
 
+app.post('/api/log-transfer', async (req, res) => {
+  try {
+    const { from, to, amount, txHash } = req.body;
+
+    // Direct Insert Query (Mongoose style)
+    const newLog = await Transfer.create({
+      from,
+      to,
+      amount,
+      txHash,
+      timestamp: new Date() // Optional: time record karne ke liye
+    });
+
+    console.log("Data Inserted:", newLog);
+    
+    res.status(200).json({ 
+      success: true, 
+      message: "Transfer details inserted in MongoDB successfully" 
+    });
+
+  } catch (err) {
+    console.error("Insert Error:", err);
+    res.status(500).json({ 
+      success: false, 
+      error: err.message 
+    });
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`🚀 Server on port ${PORT}`));
